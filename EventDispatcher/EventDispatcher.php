@@ -140,7 +140,7 @@ class EventDispatcher implements EventDispatcherInterface
         $pattern = new Pattern($eventPattern, $listener, $priority);
         $this->patterns[$eventPattern][] = $pattern;
 
-        foreach ($this->bound as $eventName => $_) {
+        foreach ($this->syncedEvents as $eventName => $_) {
             if ($pattern->test($eventName)) {
                 unset($this->syncedEvents[$eventName]);
             }
