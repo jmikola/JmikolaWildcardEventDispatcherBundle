@@ -85,10 +85,14 @@ class EventDispatcher implements EventDispatcherInterface
     /**
      * @see EventDispatcherInterface::addSubscriber
      */
-    public function addSubscriber(EventSubscriberInterface $subscriber, $priority = 0)
+    public function addSubscriber(EventSubscriberInterface $subscriber)
     {
-        foreach ($subscriber->getSubscribedEvents() as $eventName => $method) {
-            $this->addListener($eventName, array($subscriber, $method), $priority);
+        foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
+            if (is_array($params)) {
+                $this->addListener($eventName, array($subscriber, $params[0]), $params[1]);
+            } else {
+                $this->addListener($eventName, array($subscriber, $params));
+            }
         }
     }
 
@@ -97,8 +101,8 @@ class EventDispatcher implements EventDispatcherInterface
      */
     public function removeSubscriber(EventSubscriberInterface $subscriber)
     {
-        foreach ($subscriber->getSubscribedEvents() as $eventName => $method) {
-            $this->removeListener($eventName, array($subscriber, $method));
+        foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
+            $this->removeListener($eventName, array($subscriber, is_array($params) ? $params[0] : $params));
         }
     }
 

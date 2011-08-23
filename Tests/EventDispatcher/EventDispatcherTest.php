@@ -116,10 +116,13 @@ class EventDispatcherTest extends \PHPUnit_Framework_TestCase
         $subscriber = new TestEventSubscriber();
 
         $i = 0;
-        $priority = 10;
+        $defaultPriority = 0;
         $numSubscribedEvents = count($subscriber->getSubscribedEvents());
 
-        foreach ($subscriber->getSubscribedEvents() as $eventName => $method) {
+        foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
+            $method = is_array($params) ? $params[0] : $params;
+            $priority = is_array($params) ? $params[1] : $defaultPriority;
+
             $this->innerDispatcher->expects($this->at($i))
                 ->method('addListener')
                 ->with($eventName, array($subscriber, $method), $priority);
@@ -145,6 +148,9 @@ class TestEventSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {
-        return array('core.request' => 'onRequest', 'core.exception' => 'onException');
+        return array(
+            'core.request' => 'onRequest',
+            'core.exception' => array('onException', 10),
+        );
     }
 }
