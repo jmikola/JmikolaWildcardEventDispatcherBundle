@@ -5,7 +5,7 @@ require_once $vendorDir.'/symfony/src/Symfony/Component/ClassLoader/UniversalCla
 
 $loader = new Symfony\Component\ClassLoader\UniversalClassLoader();
 $loader->registerNamespaces(array(
-    'Symfony'                  => $vendorDir.'/symfony/src',
+    'Symfony'                     => $vendorDir.'/symfony/src',
     'Jmikola\EventWildcardBundle' => $vendorDir.'/bundles',
 ));
 $loader->register();
