@@ -124,9 +124,11 @@ class EventDispatcher implements EventDispatcherInterface
             return;
         }
 
-        foreach ($this->patterns as $pattern) {
-            if ($pattern->test($eventName)) {
-                $pattern->bind($this->dispatcher, $eventName);
+        foreach ($this->patterns as $eventPattern => $patterns) {
+            foreach ($patterns as $pattern) {
+                if ($pattern->test($eventName)) {
+                    $pattern->bind($this->dispatcher, $eventName);
+                }
             }
         }
 
