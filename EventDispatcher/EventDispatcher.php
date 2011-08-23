@@ -174,7 +174,7 @@ class EventDispatcher implements EventDispatcherInterface
         }
 
         foreach ($this->patterns[$eventPattern] as $key => $pattern) {
-            if ($listener == $pattern->listener) {
+            if ($listener == $pattern->getListener()) {
                 $pattern->unbind($this->dispatcher);
                 unset($this->patterns[$eventPattern][$key]);
             }

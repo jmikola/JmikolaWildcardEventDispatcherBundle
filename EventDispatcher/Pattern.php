@@ -42,6 +42,16 @@ class Pattern
     }
 
     /**
+     * Get the pattern listener.
+     *
+     * @return callback
+     */
+    public function getListener()
+    {
+        return $this->listener;
+    }
+
+    /**
      * Adds this pattern's listener to an event.
      *
      * @param EventDispatcherInterface $dispatcher
