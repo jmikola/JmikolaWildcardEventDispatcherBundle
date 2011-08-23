@@ -55,6 +55,14 @@ class EventDispatcher implements EventDispatcherInterface
     }
 
     /**
+     * @see EventDispatcherInterface::hasListeners
+     */
+    public function hasListeners($eventName = null)
+    {
+        return (boolean) count($this->getListeners($eventName));
+    }
+
+    /**
      * @see EventDispatcherInterface::addListener
      */
     public function addListener($eventName, $listener, $priority = 0)
