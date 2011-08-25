@@ -68,7 +68,7 @@ class EventDispatcher implements EventDispatcherInterface
     public function addListener($eventName, $listener, $priority = 0)
     {
         return $this->hasWildcards($eventName)
-            ? $this->addPatternListener($eventName, $listener, $priority)
+            ? $this->addListenerPattern(new ListenerPattern($eventName, $listener, $priority))
             : $this->dispatcher->addListener($eventName, $listener, $priority);
     }
 
@@ -78,7 +78,7 @@ class EventDispatcher implements EventDispatcherInterface
     public function removeListener($eventName, $listener)
     {
         return $this->hasWildcards($eventName)
-            ? $this->removePatternListener($eventName, $listener)
+            ? $this->removeListenerPattern($eventName, $listener)
             : $this->dispatcher->removeListener($eventName, $listener);
     }
 
@@ -112,7 +112,7 @@ class EventDispatcher implements EventDispatcherInterface
      * @param string $subject
      * @return boolean
      */
-    private function hasWildcards($subject)
+    protected function hasWildcards($subject)
     {
         return false !== strpos($subject, '*') || false !== strpos($subject, '#');
     }
@@ -122,7 +122,7 @@ class EventDispatcher implements EventDispatcherInterface
      *
      * @param string $eventName
      */
-    private function bindPatterns($eventName)
+    protected function bindPatterns($eventName)
     {
         if (isset($this->syncedEvents[$eventName])) {
             return;
@@ -145,14 +145,11 @@ class EventDispatcher implements EventDispatcherInterface
      * This method will lazily register the listener when a matching event is
      * dispatched.
      *
-     * @param string   $eventPattern
-     * @param callback $listener
-     * @param integer  $priority
+     * @param ListenerPattern $pattern
      */
-    private function addPatternListener($eventPattern, $listener, $priority = 0)
+    protected function addListenerPattern(ListenerPattern $pattern)
     {
-        $pattern = new Pattern($eventPattern, $listener, $priority);
-        $this->patterns[$eventPattern][] = $pattern;
+        $this->patterns[$pattern->getEventPattern()][] = $pattern;
 
         foreach ($this->syncedEvents as $eventName => $_) {
             if ($pattern->test($eventName)) {
@@ -171,7 +168,7 @@ class EventDispatcher implements EventDispatcherInterface
      * @param string   $eventPattern
      * @param callback $listener
      */
-    private function removePatternListener($eventPattern, $listener)
+    protected function removeListenerPattern($eventPattern, $listener)
     {
         if (!isset($this->patterns[$eventPattern])) {
             return;

@@ -4,13 +4,13 @@ namespace Jmikola\EventWildcardBundle\EventDispatcher;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class Pattern
+class ListenerPattern
 {
-    private $eventPattern;
-    private $events = array();
-    private $listener;
-    private $priority;
-    private $regex;
+    protected $eventPattern;
+    protected $events = array();
+    protected $listener;
+    protected $priority;
+    protected $regex;
 
     private static $replacements = array(
         // Trailing single-wildcard with separator prefix
@@ -31,7 +31,6 @@ class Pattern
      * @param string   $eventPattern
      * @param callback $listener
      * @param integer  $priority
-     * 
      */
     public function __construct($eventPattern, $listener, $priority = 0)
     {
@@ -42,7 +41,17 @@ class Pattern
     }
 
     /**
-     * Get the pattern listener.
+     * Get the event pattern.
+     *
+     * @return string
+     */
+    public function getEventPattern()
+    {
+        return $this->eventPattern;
+    }
+
+    /**
+     * Get the listener.
      *
      * @return callback
      */
@@ -56,7 +65,6 @@ class Pattern
      *
      * @param EventDispatcherInterface $dispatcher
      * @param string                   $eventName
-     * @throw InvalidArgumentException
      */
     public function bind(EventDispatcherInterface $dispatcher, $eventName)
     {
@@ -64,11 +72,7 @@ class Pattern
             return;
         }
 
-        if (!$this->test($eventName)) {
-            throw new \InvalidArgumentException(sprintf('Pattern "%s" does not match event name "%s"', $this->eventPattern, $eventName));
-        }
-
-        $dispatcher->addListener($eventName, $this->listener, $this->priority);
+        $dispatcher->addListener($eventName, $this->getListener(), $this->priority);
         $this->events[$eventName] = true;
     }
 
@@ -81,7 +85,7 @@ class Pattern
     public function unbind(EventDispatcherInterface $dispatcher)
     {
         foreach ($this->events as $eventName => $_) {
-            $dispatcher->removeListener($eventName, $this->listener);
+            $dispatcher->removeListener($eventName, $this->getListener());
         }
 
         $this->events = array();
@@ -93,7 +97,7 @@ class Pattern
      * @param string $eventName
      * @return boolean
      */
-    public function test($eventName)
+    public final function test($eventName)
     {
         return (boolean) preg_match($this->regex, $eventName);
     }

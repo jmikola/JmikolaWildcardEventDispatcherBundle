@@ -2,16 +2,16 @@
 
 namespace Jmikola\EventWildcardBundle\Tests\EventDispatcher;
 
-use Jmikola\EventWildcardBundle\EventDispatcher\Pattern;
+use Jmikola\EventWildcardBundle\EventDispatcher\ListenerPattern;
 
-class PatternTest extends \PHPUnit_Framework_TestCase
+class ListenerPatternTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider providePatternsAndMatches
      */
     public function testPatternMatching($eventPattern, array $expectedMatches, array $expectedMisses)
     {
-        $pattern = new Pattern($eventPattern, null);
+        $pattern = new ListenerPattern($eventPattern, null);
 
         foreach ($expectedMatches as $eventName) {
             $this->assertTrue($pattern->test($eventName), sprintf('Pattern "%s" should match event "%s"', $eventPattern, $eventName));
@@ -70,7 +70,7 @@ class PatternTest extends \PHPUnit_Framework_TestCase
 
     public function testDispatcherBinding()
     {
-        $pattern = new Pattern('core.*', $listener = 'callback', $priority = 0);
+        $pattern = new ListenerPattern('core.*', $listener = 'callback', $priority = 0);
 
         $dispatcher = $this->getMockEventDispatcher();
 
@@ -82,18 +82,6 @@ class PatternTest extends \PHPUnit_Framework_TestCase
 
         // bind() should avoid adding the listener multiple times to the same event
         $pattern->bind($dispatcher, 'core.request');
-    }
-
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testDispatcherBindingShouldRequireMatchingEventNames()
-    {
-        $pattern = new Pattern('core.*', $listener = 'callback', $priority = 0);
-
-        $dispatcher = $this->getMockEventDispatcher();
-
-        $pattern->bind($dispatcher, 'api.v2');
     }
 
     private function getMockEventDispatcher()
