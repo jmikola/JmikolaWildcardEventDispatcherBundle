@@ -1,13 +1,13 @@
 <?php
 
-namespace Jmikola\EventWildcardBundle\Tests\EventDispatcher;
+namespace Jmikola\EventWildcardBundle\Tests\Functional;
 
 use Symfony\Component\EventDispatcher\Event;
 
 use Jmikola\EventWildcardBundle\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcher as SymfonyEventDispatcher;
 
-class EventDispatcherFunctionalTest extends \PHPUnit_Framework_TestCase
+class EventDispatcherTest extends \PHPUnit_Framework_TestCase
 {
     const coreRequest = 'core.request';
     const coreException = 'core.exception';
