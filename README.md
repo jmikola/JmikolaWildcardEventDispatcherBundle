@@ -18,4 +18,4 @@ mailing list.
 
 This bundle's documentation lives in [Resources/doc/index.md][].
 
-  [Resources/doc/index.md]: blob/master/Resources/doc/index.md
+  [Resources/doc/index.md]: https://github.com/jmikola/JmikolaEventWildcardBundle/blob/master/Resources/doc/index.md
