@@ -42,7 +42,7 @@ kernel:
 public function registerBundles()
 {
     return array(
-        new OpenSky\Bundle\EventWildcardBundle\JmikolaEventWildcardBundle(),
+        new Jmikola\EventWildcardBundle\JmikolaEventWildcardBundle(),
     );
 }
 ```
