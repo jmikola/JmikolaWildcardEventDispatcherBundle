@@ -10,7 +10,7 @@
     <services>
         <service id="jmikola_event_wildcard.event_dispatcher" class="%jmikola_event_wildcard.event_dispatcher.class%">
             <argument type="service" id="service_container" />
-            <argument /> <!-- Event Dispatcher -->
+            <argument type="service" id="jmikola_event_wildcard.event_dispatcher.inner" />
         </service>
     </services>
 
