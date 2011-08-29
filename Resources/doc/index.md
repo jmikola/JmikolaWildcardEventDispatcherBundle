@@ -49,21 +49,15 @@ public function registerBundles()
 
 ## Configuration
 
-EventWildcardBundle may be configured with the following:
+There are no configuration options. Symfony2 will load the bundle's dependency
+injection extension automatically.
 
-``` yaml
-# app/config/config.yml
+The extension will create a service that [composes][] the existing
+`event_dispatcher` service and assumes its service ID. Depending on whether
+debug mode is enabled, this bundle may wrap an instance of FrameworkBundle's
+`ContainerAwareEventDispatcher` or `TraceableEventDispatcher` class.
 
-jmikola_event_wildcard: ~
-```
-
-There are no configuration options. Loading the dependency injection extension
-will instruct the bundle to [compose][] the existing `event_dispatcher` service
-and assume its service ID. Depending on whether debug mode is enabled, this
-bundle may wrap in instance of FrameworkBundle's `ContainerAwareEventDispatcher`
-or `TraceableEventDispatcher` class.
-
-  [compose]: http://en.wikipedia.org/wiki/Object_composition
+  [composes]: http://en.wikipedia.org/wiki/Object_composition
 
 ## Listening on Wildcard Event Patterns ##
 
