@@ -1,7 +1,9 @@
 <?php
 
-namespace Jmikola\EventWildcardBundle\EventDispatcher;
+namespace Jmikola\WildcardEventDispatcherBundle\EventDispatcher;
 
+use Jmikola\WildcardEventDispatcher\EventDispatcher;
+use Jmikola\WildcardEventDispatcher\LazyListenerPattern;
 use Symfony\Bundle\FrameworkBundle\ContainerAwareEventDispatcher as BaseContainerAwareEventDispatcher;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\Event;

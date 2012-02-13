@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmikola\EventWildcardBundle\DependencyInjection\Compiler;
+namespace Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,13 +15,13 @@ class EventDispatcherPass implements CompilerPassInterface
          * "event_dispatcher" service ID.
          */
         if ($container->hasAlias('event_dispatcher')) {
-            $container->setAlias('jmikola_event_wildcard.event_dispatcher.inner', new Alias((string) $container->getAlias('event_dispatcher'), false));
+            $container->setAlias('jmikola_wildcard_event_dispatcher.event_dispatcher.inner', new Alias((string) $container->getAlias('event_dispatcher'), false));
         } else {
             $definition = $container->getDefinition('event_dispatcher');
             $definition->setPublic(false);
-            $container->setDefinition('jmikola_event_wildcard.event_dispatcher.inner', $definition);
+            $container->setDefinition('jmikola_wildcard_event_dispatcher.event_dispatcher.inner', $definition);
         }
 
-        $container->setAlias('event_dispatcher', 'jmikola_event_wildcard.event_dispatcher');
+        $container->setAlias('event_dispatcher', 'jmikola_wildcard_event_dispatcher.event_dispatcher');
     }
 }

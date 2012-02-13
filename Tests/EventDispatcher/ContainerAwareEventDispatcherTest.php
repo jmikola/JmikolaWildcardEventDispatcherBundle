@@ -1,8 +1,8 @@
 <?php
 
-namespace Jmikola\EventWildcardBundle\Tests\Functional;
+namespace Jmikola\WildcardEventDispatcherBundle\Tests\Functional;
 
-use Jmikola\EventWildcardBundle\EventDispatcher\ContainerAwareEventDispatcher;
+use Jmikola\WildcardEventDispatcherBundle\EventDispatcher\ContainerAwareEventDispatcher;
 use Symfony\Bundle\FrameworkBundle\ContainerAwareEventDispatcher as SymfonyContainerAwareEventDispatcher;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\EventDispatcher\Event;

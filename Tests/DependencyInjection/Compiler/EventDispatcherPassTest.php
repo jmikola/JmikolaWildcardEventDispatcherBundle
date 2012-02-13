@@ -1,12 +1,12 @@
 <?php
 
-namespace Jmikola\EventWildcardBundle\Tests\DependencyInjection\Compiler;
+namespace Jmikola\WildcardEventDispatcherBundle\Tests\DependencyInjection\Compiler;
 
-use Jmikola\EventWildcardBundle\DependencyInjection\Compiler\EventDispatcherPass;
+use Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\EventDispatcherPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class JmikolaEventWildcardExtensionTest extends \PHPUnit_Framework_TestCase
+class EventDispatcherPassTest extends \PHPUnit_Framework_TestCase
 {
     private $container;
     private $pass;
@@ -24,9 +24,9 @@ class JmikolaEventWildcardExtensionTest extends \PHPUnit_Framework_TestCase
 
         $this->pass->process($this->container);
 
-        $this->assertServiceHasAlias('event_dispatcher.real', 'jmikola_event_wildcard.event_dispatcher.inner');
-        $this->assertFalse($this->container->getAlias('jmikola_event_wildcard.event_dispatcher.inner')->isPublic());
-        $this->assertServiceHasAlias('jmikola_event_wildcard.event_dispatcher', 'event_dispatcher');
+        $this->assertServiceHasAlias('event_dispatcher.real', 'jmikola_wildcard_event_dispatcher.event_dispatcher.inner');
+        $this->assertFalse($this->container->getAlias('jmikola_wildcard_event_dispatcher.event_dispatcher.inner')->isPublic());
+        $this->assertServiceHasAlias('jmikola_wildcard_event_dispatcher.event_dispatcher', 'event_dispatcher');
     }
 
     public function testShouldComposeDefinition()
@@ -35,11 +35,11 @@ class JmikolaEventWildcardExtensionTest extends \PHPUnit_Framework_TestCase
 
         $this->pass->process($this->container);
 
-        $newDefinition = $this->container->getDefinition('jmikola_event_wildcard.event_dispatcher.inner');
+        $newDefinition = $this->container->getDefinition('jmikola_wildcard_event_dispatcher.event_dispatcher.inner');
         $this->assertFalse($newDefinition->isPublic());
         $this->assertSame($originalDefinition, $newDefinition);
 
-        $this->assertServiceHasAlias('jmikola_event_wildcard.event_dispatcher', 'event_dispatcher');
+        $this->assertServiceHasAlias('jmikola_wildcard_event_dispatcher.event_dispatcher', 'event_dispatcher');
     }
 
     private function assertServiceHasAlias($serviceId, $aliasId)

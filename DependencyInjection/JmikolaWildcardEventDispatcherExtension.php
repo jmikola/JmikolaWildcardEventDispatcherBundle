@@ -1,13 +1,13 @@
 <?php
 
-namespace Jmikola\EventWildcardBundle\DependencyInjection;
+namespace Jmikola\WildcardEventDispatcherBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class JmikolaEventWildcardExtension extends Extension
+class JmikolaWildcardEventDispatcherExtension extends Extension
 {
     /**
      * @see Symfony\Component\DependencyInjection\Extension\ExtensionInterface::load()

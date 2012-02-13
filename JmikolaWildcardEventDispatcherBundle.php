@@ -1,12 +1,12 @@
 <?php
 
-namespace Jmikola\EventWildcardBundle;
+namespace Jmikola\WildcardEventDispatcherBundle;
 
-use Jmikola\EventWildcardBundle\DependencyInjection\Compiler\EventDispatcherPass;
+use Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\EventDispatcherPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class JmikolaEventWildcardBundle extends Bundle
+class JmikolaWildcardEventDispatcherBundle extends Bundle
 {
     /**
      * @see Symfony\Component\HttpKernel\Bundle\Bundle::build()
