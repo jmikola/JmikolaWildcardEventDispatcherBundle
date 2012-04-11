@@ -4,8 +4,8 @@ namespace Jmikola\WildcardEventDispatcherBundle\EventDispatcher;
 
 use Jmikola\WildcardEventDispatcher\WildcardEventDispatcher;
 use Jmikola\WildcardEventDispatcher\LazyListenerPattern;
-use Symfony\Bundle\FrameworkBundle\ContainerAwareEventDispatcher as BaseContainerAwareEventDispatcher;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher as BaseContainerAwareEventDispatcher;
 use Symfony\Component\EventDispatcher\Event;
 
 class ContainerAwareEventDispatcher extends WildcardEventDispatcher
