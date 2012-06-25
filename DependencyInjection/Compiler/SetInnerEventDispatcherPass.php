@@ -15,7 +15,7 @@ class SetInnerEventDispatcherPass implements CompilerPassInterface
         } else {
             $definition = $container->getDefinition('event_dispatcher');
             $definition->setPublic(false);
-            $container->setDefinition('jmikola_wildcard_event_dispatcher.event_dispatcher.inner', $container->getDefinition('event_dispatcher'));
+            $container->setDefinition('jmikola_wildcard_event_dispatcher.event_dispatcher.inner', $definition);
         }
     }
 }
