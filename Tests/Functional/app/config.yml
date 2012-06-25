@@ -1,0 +1,9 @@
+services:
+    count_listener:
+        class: Jmikola\WildcardEventDispatcherBundle\Tests\Functional\CountListener
+        tags:
+            - { name: kernel.event_listener, event: *.request, method: onEvent }
+
+framework:
+    secret: foobar
+    test: ~

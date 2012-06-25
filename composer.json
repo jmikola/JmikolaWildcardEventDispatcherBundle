@@ -16,6 +16,12 @@
         "symfony/event-dispatcher": "2.1.*",
         "symfony/http-kernel": "2.1.*"
     },
+    "require-dev": {
+        "symfony/browser-kit": "2.1.*",
+        "symfony/class-loader": "2.1.*",
+        "symfony/framework-bundle": "2.1.*",
+        "symfony/yaml": "2.1.*"
+    },
     "autoload": {
         "psr-0": { "Jmikola\\WildcardEventDispatcherBundle": "" }
     },

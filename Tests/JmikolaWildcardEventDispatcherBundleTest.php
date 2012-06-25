@@ -14,7 +14,8 @@ class JmikolaWildcardEventDispatcherBundleTest extends \PHPUnit_Framework_TestCa
 
         $bundle->build($container);
 
-        $passes = $container->getCompilerPassConfig()->getAfterRemovingPasses();
-        $this->assertInstanceOf('Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\EventDispatcherPass', $passes[0]);
+        $passes = $container->getCompilerPassConfig()->getBeforeOptimizationPasses();
+        $this->assertInstanceOf('Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\SetInnerEventDispatcherPass', $passes[0]);
+        $this->assertInstanceOf('Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\ReplaceEventDispatcherPass', $passes[1]);
     }
 }

@@ -2,7 +2,8 @@
 
 namespace Jmikola\WildcardEventDispatcherBundle;
 
-use Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\EventDispatcherPass;
+use Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\ReplaceEventDispatcherPass;
+use Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\SetInnerEventDispatcherPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -16,7 +17,7 @@ class JmikolaWildcardEventDispatcherBundle extends Bundle
     {
         parent::build($container);
 
-        // Ensure execution after FrameworkBundle's RegisterKernelListenersPass
-        $container->addCompilerPass(new EventDispatcherPass(), PassConfig::TYPE_AFTER_REMOVING);
+        $container->addCompilerPass(new SetInnerEventDispatcherPass());
+        $container->addCompilerPass(new ReplaceEventDispatcherPass());
     }
 }

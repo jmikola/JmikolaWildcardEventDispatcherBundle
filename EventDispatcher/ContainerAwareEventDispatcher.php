@@ -59,4 +59,26 @@ class ContainerAwareEventDispatcher extends WildcardEventDispatcher
 
         $this->addListenerPattern(new LazyListenerPattern($eventPattern, $listenerProvider, $priority));
     }
+
+    /**
+     * Adds a service as an event subscriber for all events matching the
+     * specified pattern
+     *
+     * @param string $serviceId The service ID of the subscriber service
+     * @param string $class     The service's class name (which must implement EventSubscriberInterface)
+     */
+    public function addSubscriberService($serviceId, $class)
+    {
+        foreach ($class::getSubscribedEvents() as $eventName => $params) {
+            if (is_string($params)) {
+                $this->addListenerService($eventName, array($serviceId, $params), 0);
+            } elseif (is_string($params[0])) {
+                $this->addListenerService($eventName, array($serviceId, $params[0]), isset($params[1]) ? $params[1] : 0);
+            } else {
+                foreach ($params as $listener) {
+                    $this->addListenerService($eventName, array($serviceId, $listener[0]), isset($listener[1]) ? $listener[1] : 0);
+                }
+            }
+        }
+    }
 }
