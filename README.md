@@ -1,5 +1,7 @@
 # JmikolaWildcardEventDispatcherBundle
 
+[![Build Status](https://travis-ci.org/jmikola/JmikolaWildcardEventDispatcherBundle.png?branch=master)](https://travis-ci.org/jmikola/JmikolaWildcardEventDispatcherBundle)
+
 This bundle integrates the [WildcardEventDispatcher][] library with Symfony2 and
 allows event listeners to be assigned using a wildcard pattern inspired by
 AMQP topic exchanges.
