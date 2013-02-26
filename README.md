@@ -18,6 +18,13 @@ mailing list.
   [WildcardEventDispatcher]: https://github.com/jmikola/WildcardEventDispatcher
   [symfony-devs]: https://groups.google.com/d/topic/symfony-devs/GWeOTMfKg9s/discussion
 
+## Compatibility
+
+This bundle's `master` branch maintains compatibility with Symfony2's master
+branch. The 1.0.x tag for this bundle tracks its `master` branch.
+
+There is no support for Symfony 2.0.x.
+
 ## Configuration
 
 There are no configuration options. Symfony2 will load the bundle's dependency
