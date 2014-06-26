@@ -5,8 +5,7 @@ namespace Jmikola\WildcardEventDispatcherBundle\EventDispatcher;
 use Jmikola\WildcardEventDispatcher\WildcardEventDispatcher;
 use Jmikola\WildcardEventDispatcher\LazyListenerPattern;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher as BaseContainerAwareEventDispatcher;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ContainerAwareEventDispatcher extends WildcardEventDispatcher
 {
@@ -17,9 +16,9 @@ class ContainerAwareEventDispatcher extends WildcardEventDispatcher
      * Constructor.
      *
      * @param ContainerInterface                $container
-     * @param BaseContainerAwareEventDispatcher dispatcher
+     * @param EventDispatcherInterface          $dispatcher
      */
-    public function __construct(ContainerInterface $container, BaseContainerAwareEventDispatcher $dispatcher)
+    public function __construct(ContainerInterface $container, EventDispatcherInterface $dispatcher)
     {
         parent::__construct($dispatcher);
 
