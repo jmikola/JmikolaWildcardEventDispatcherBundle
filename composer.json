@@ -24,7 +24,6 @@
         "symfony/yaml": "~2.1"
     },
     "autoload": {
-        "psr-0": { "Jmikola\\WildcardEventDispatcherBundle": "" }
-    },
-    "target-dir": "Jmikola/WildcardEventDispatcherBundle"
+        "psr-4": { "Jmikola\\WildcardEventDispatcherBundle\\": "" }
+    }
 }
