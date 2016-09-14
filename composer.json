@@ -24,5 +24,10 @@
     },
     "autoload": {
         "psr-4": { "Jmikola\\WildcardEventDispatcherBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
