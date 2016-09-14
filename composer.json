@@ -8,7 +8,6 @@
     "authors": [
         { "name": "Jeremy Mikola", "email": "jmikola@gmail.com" }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.2",
         "jmikola/wildcard-event-dispatcher": "1.0.*",
