@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/jmikola/JmikolaWildcardEventDispatcherBundle.png?branch=master)](https://travis-ci.org/jmikola/JmikolaWildcardEventDispatcherBundle)
 
-This bundle integrates the [WildcardEventDispatcher][] library with Symfony2 and
+This bundle integrates the [WildcardEventDispatcher][] library with Symfony and
 allows event listeners to be assigned using a wildcard pattern inspired by
 AMQP topic exchanges.
 
-Symfony2's event dispatcher component and the framework's existing convention
+Symfony's event dispatcher component and the framework's existing convention
 for event names (dot-separated words) is already quite similar to AMQP message
 routing keys. This bundle is intended to be used sparingly, where wildcards may
 replace verbose configuration for central listeners, such as an activity logging
@@ -20,14 +20,11 @@ mailing list.
 
 ## Compatibility
 
-This bundle's `master` branch maintains compatibility with Symfony2's master
-branch. The 1.0.x tag for this bundle tracks its `master` branch.
-
-There is no support for Symfony 2.0.x.
+This bundle requires Symfony 2.3 or above.
 
 ## Configuration
 
-There are no configuration options. Symfony2 will load the bundle's dependency
+There are no configuration options. Symfony will load the bundle's dependency
 injection extension automatically.
 
 The extension will create a service that [composes][] the existing
