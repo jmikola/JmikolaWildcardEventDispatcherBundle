@@ -20,10 +20,7 @@ mailing list.
 
 ## Compatibility
 
-This bundle's `master` branch maintains compatibility with Symfony2's master
-branch. The 1.0.x tag for this bundle tracks its `master` branch.
-
-There is no support for Symfony 2.0.x.
+This bundle requires Symfony 2.3 or above.
 
 ## Configuration
 
