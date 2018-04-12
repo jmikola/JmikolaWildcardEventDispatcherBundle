@@ -1,7 +1,7 @@
 {
     "name": "jmikola/wildcard-event-dispatcher-bundle",
     "type": "symfony-bundle",
-    "description": "Enhances the Symfony2 event dispatcher with support for wildcard patterns inspired by AMQP topic exchanges.",
+    "description": "Enhances the Symfony event dispatcher with support for wildcard patterns inspired by AMQP topic exchanges.",
     "keywords": ["AMQP", "dispatcher", "event", "event dispatcher"],
     "homepage": "https://github.com/jmikola/JmikolaWildcardEventDispatcherBundle",
     "license": "MIT",
