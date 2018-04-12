@@ -3,10 +3,11 @@
 namespace Jmikola\WildcardEventDispatcherBundle\Tests\DependencyInjection\Compiler;
 
 use Jmikola\WildcardEventDispatcherBundle\DependencyInjection\Compiler\SetInnerEventDispatcherPass;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class SetInnerEventDispatcherPassTest extends \PHPUnit_Framework_TestCase
+class SetInnerEventDispatcherPassTest extends TestCase
 {
     private $container;
     private $pass;
