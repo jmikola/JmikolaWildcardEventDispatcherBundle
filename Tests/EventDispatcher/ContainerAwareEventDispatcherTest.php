@@ -3,11 +3,12 @@
 namespace Jmikola\WildcardEventDispatcherBundle\Tests\Functional;
 
 use Jmikola\WildcardEventDispatcherBundle\EventDispatcher\ContainerAwareEventDispatcher;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher as SymfonyContainerAwareEventDispatcher;
 use Symfony\Component\EventDispatcher\Event;
 
-class ContainerAwareEventDispatcherTest extends \PHPUnit_Framework_TestCase
+class ContainerAwareEventDispatcherTest extends TestCase
 {
     const coreRequest = 'core.request';
     const coreException = 'core.exception';

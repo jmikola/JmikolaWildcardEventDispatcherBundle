@@ -3,9 +3,10 @@
 namespace Jmikola\WildcardEventDispatcherBundle\Tests;
 
 use Jmikola\WildcardEventDispatcherBundle\JmikolaWildcardEventDispatcherBundle;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class JmikolaWildcardEventDispatcherBundleTest extends \PHPUnit_Framework_TestCase
+class JmikolaWildcardEventDispatcherBundleTest extends TestCase
 {
     public function testShouldAddCompilerPass()
     {
